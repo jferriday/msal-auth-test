@@ -4,9 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// auth imports
+import { MsalProvider } from '@azure/msal-react'
+import { PublicClientApplication } from '@azure/msal-browser';
+
+import { config } from './auth/authConfig';
+
+
+// auth instance setup
+const pca = new PublicClientApplication(config)
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MsalProvider instance={pca}>
+      <App />
+    </MsalProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
