@@ -28,7 +28,7 @@ function App() {
         const headers = new Headers()
         headers.append('Authorization', 'Bearer ' + token)
         try {
-          const response = await fetch('https://auth-setup-backend.azurewebsites.net/hello', {
+          const response = await fetch('https://auth-setup-ded-express.azurewebsites.net/hello', {
             headers: headers
           })
           const responseText = await response.text()
@@ -40,7 +40,7 @@ function App() {
 
   function hitAPI() {
     const accessTokenRequest = {
-      scopes: ["api://2ad679a9-901c-4ec7-9e78-5fd8646eb165/user_impersonation"],
+      scopes: ["api://6daff423-844d-4897-9691-6d01db37c61a/read_api"],
       account: instance.getActiveAccount()
     }
     instance.acquireTokenSilent(accessTokenRequest)
