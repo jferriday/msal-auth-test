@@ -5,22 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // auth imports
-import { MsalProvider } from '@azure/msal-react'
-import { PublicClientApplication } from '@azure/msal-browser';
+import { AuthProvider } from 'react-oidc-context'
 
-import { config } from './auth/authConfig';
+// Auth configuration
+const oidcConfig = {
+	authority:
+		"https://lorenzosv.demo.cloud.healthcare-uk.dxc.technology/OIDCPortal/connect",
+	client_id: "5056512717432228513",
+	redirect_uri: "http://localhost:3000/one-ed/openidlogin/",
 
+};
 
-// auth instance setup
-const pca = new PublicClientApplication(config)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <MsalProvider instance={pca}>
-      <App />
-    </MsalProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<AuthProvider {...oidcConfig}>
+			<App />
+		</AuthProvider>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
