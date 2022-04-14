@@ -6,14 +6,18 @@ import reportWebVitals from './reportWebVitals';
 
 // auth imports
 import { AuthProvider } from 'react-oidc-context'
+import { Log } from 'oidc-client-ts'
+Log.setLogger(console)
+
 
 // Auth configuration
 const oidcConfig = {
 	authority:
-		"https://lorenzosv.demo.cloud.healthcare-uk.dxc.technology/OIDCPortal/connect",
+		"https://lorenzosv.demo.cloud.healthcare-uk.dxc.technology/OIDCPortal/connect/",
 	client_id: "5056512717432228513",
 	redirect_uri: "http://localhost:3000/one-ed/openidlogin/",
-
+	client_secret: "5056512717432228513",
+	
 };
 
 
