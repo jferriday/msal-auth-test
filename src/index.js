@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 // auth imports
 import { AuthProvider } from 'react-oidc-context'
 import { Log } from 'oidc-client-ts'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 Log.setLogger(console)
 
 
@@ -24,7 +25,13 @@ const oidcConfig = {
 ReactDOM.render(
 	<React.StrictMode>
 		<AuthProvider {...oidcConfig}>
-			<App />
+			<BrowserRouter>
+				<Routes>
+				<Route exact path="/" element={<App />} />
+
+				</Routes>
+
+			</BrowserRouter>
 		</AuthProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
